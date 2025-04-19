@@ -1,4 +1,60 @@
 <div class="container mt-4">
-    <h2>Lista de Filmes</h2>
-    <p>Aqui você verá todos os filmes com opções de filtros e paginação.</p>
-  </div>
+  <h2>Movie List</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>
+          Year
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Filter by year"
+            [(ngModel)]="yearFilter"
+          />
+        </th>
+        <th>Title</th>
+        <th>
+          Winner?
+          <select class="form-select" [(ngModel)]="winnerFilter">
+            <option value="">All</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of filteredMovies">
+        <td>{{ movie.id }}</td>
+        <td>{{ movie.year }}</td>
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.winner }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <nav>
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <button class="page-link" (click)="goToPage(1)">First</button>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <button class="page-link" (click)="goToPage(currentPage - 1)"> < </button>
+      </li>
+      <li
+        class="page-item"
+        *ngFor="let page of pages"
+        [class.active]="page === currentPage"
+      >
+        <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <button class="page-link" (click)="goToPage(currentPage + 1)"> > </button>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <button class="page-link" (click)="goToPage(totalPages)">Last</button>
+      </li>
+    </ul>
+  </nav>
+</div>

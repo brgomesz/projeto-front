@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    MovieListComponent,
   ],
   imports: [
     BrowserModule,
