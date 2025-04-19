@@ -5,17 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { MovieListComponent } from './views/movie-list/movie-list.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    DashboardComponent,
-    MovieListComponent
+    MovieListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    AppComponent
+    AppComponent,
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: []
