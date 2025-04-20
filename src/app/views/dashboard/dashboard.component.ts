@@ -6,39 +6,49 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  yearsWithMultipleWinners = [
-    { year: 1986, count: 2 },
-    { year: 1990, count: 2 },
-    { year: 2015, count: 2 }
-  ];
-
-  topStudios = [
-    { studio: 'Columbia Pictures', wins: 6 },
-    { studio: 'Paramount Pictures', wins: 6 },
-    { studio: 'Warner Bros.', wins: 5 }
-  ];
-
-  producerIntervals = {
-    largest: { producer: 'Matthew Vaughn', interval: 123, previousYear: 2002, nextYear: 2015 },
-    smallest: { producer: 'Joel Silver', interval: 1, previousYear: 1990, nextYear: 1991 }
+  apiData = {
+    studios: [
+      { name: 'Columbia Pictures', winCount: 6 },
+      { name: 'Paramount Pictures', winCount: 6 },
+      { name: 'Warner Bros.', winCount: 5 }
+    ],
+    intervalProducers: {
+      min: [
+        {
+          producer: 'Joel Silver',
+          interval: 1,
+          previousWin: 1990,
+          followingWin: 1991
+        }
+      ],
+      max: [
+        {
+          producer: 'Matthew Vaughn',
+          interval: 123,
+          previousWin: 2002,
+          followingWin: 2015
+        }
+      ]
+    },
+    winnersByYear: [] as { id: number; year: number; title: string; studios: string[]; producers: string[]; winner: boolean }[]
   };
 
-  winnersByYear: { movie: string }[] = [];
   searchYear: string | null = null;
 
   searchWinners() {
     if (this.searchYear) {
-      this.winnersByYear = [
-        { movie: 'Example Movie 1' },
-        { movie: 'Example Movie 2' }
+      this.apiData.winnersByYear = [
+        {
+          id: 1,
+          year: parseInt(this.searchYear),
+          title: 'Example Movie Title',
+          studios: ['Studio Name'],
+          producers: ['Producer Name'],
+          winner: true
+        }
       ];
     } else {
-      this.winnersByYear = [];
+      this.apiData.winnersByYear = [];
     }
-  }
-  getYearsWithMultipleWinners(): string {
-    return this.yearsWithMultipleWinners
-      .map((year) => `<tr><td>${year.year}</td><td>${year.count}</td></tr>`)
-      .join('');
   }
 }

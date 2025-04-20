@@ -1,28 +1,5 @@
 <div class="container mt-4">
   <div class="row">
-    <div class="col-lg-6 mb-4">
-      <div class="card">
-        <div class="card-header bg-primary text-white">
-          Years with Multiple Winners
-        </div>
-        <div class="card-body">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Year</th>
-                <th>Count</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let year of yearsWithMultipleWinners">
-                <td>{{ year.year }}</td>
-                <td>{{ year.count }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
 
     <div class="col-lg-6 mb-4">
       <div class="card">
@@ -38,9 +15,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let studio of topStudios">
-                <td>{{ studio.studio }}</td>
-                <td>{{ studio.wins }}</td>
+              <tr *ngFor="let studio of apiData.studios">
+                <td>{{ studio.name }}</td>
+                <td>{{ studio.winCount }}</td>
               </tr>
             </tbody>
           </table>
@@ -68,10 +45,10 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{{ producerIntervals.largest.producer }}</td>
-                    <td>{{ producerIntervals.largest.interval }}</td>
-                    <td>{{ producerIntervals.largest.previousYear }}</td>
-                    <td>{{ producerIntervals.largest.nextYear }}</td>
+                    <td>{{ apiData.intervalProducers.max[0].producer }}</td>
+                    <td>{{ apiData.intervalProducers.max[0].interval }}</td>
+                    <td>{{ apiData.intervalProducers.max[0].previousWin }}</td>
+                    <td>{{ apiData.intervalProducers.max[0].followingWin }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -89,10 +66,10 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{{ producerIntervals.smallest.producer }}</td>
-                    <td>{{ producerIntervals.smallest.interval }}</td>
-                    <td>{{ producerIntervals.smallest.previousYear }}</td>
-                    <td>{{ producerIntervals.smallest.nextYear }}</td>
+                    <td>{{ apiData.intervalProducers.min[0].producer }}</td>
+                    <td>{{ apiData.intervalProducers.min[0].interval }}</td>
+                    <td>{{ apiData.intervalProducers.min[0].previousWin }}</td>
+                    <td>{{ apiData.intervalProducers.min[0].followingWin }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -113,7 +90,7 @@
                 type="number"
                 class="form-control"
                 id="yearInput"
-                [value]="searchYear"
+                [(ngModel)]="searchYear"
                 placeholder="Enter the year"
               />
             </div>
@@ -123,16 +100,23 @@
             <thead>
               <tr>
                 <th>Movie</th>
+                <th>Studio</th>
+                <th>Producer</th>
+                <th>Winner</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let winner of winnersByYear">
-                <td>{{ winner.movie }}</td>
+              <tr *ngFor="let winner of apiData.winnersByYear">
+                <td>{{ winner.title }}</td>
+                <td>{{ winner.studios.join(', ') }}</td>
+                <td>{{ winner.producers.join(', ') }}</td>
+                <td>{{ winner.winner ? 'Yes' : 'No' }}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
+
   </div>
 </div>
