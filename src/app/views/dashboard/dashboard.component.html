@@ -3,14 +3,14 @@
     <div class="col-lg-6 mb-4">
       <div class="card">
         <div class="card-header bg-primary text-white">
-          Years with Multiple Winners
+          Years with multiple winners
         </div>
         <div class="card-body">
           <table class="table table-striped">
             <thead>
               <tr>
                 <th>Year</th>
-                <th>Count</th>
+                <th>Win count</th>
               </tr>
             </thead>
             <tbody>
@@ -26,15 +26,15 @@
 
     <div class="col-lg-6 mb-4">
       <div class="card">
-        <div class="card-header bg-success text-white">
-          Top 3 Studios with Most Wins
+        <div class="card-header bg-primary text-white">
+          Top 3 studios with most wins
         </div>
         <div class="card-body">
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>Studio</th>
-                <th>Wins</th>
+                <th>Name</th>
+                <th>Win count</th>
               </tr>
             </thead>
             <tbody>
@@ -50,20 +50,20 @@
 
     <div class="col-lg-6 mb-4">
       <div class="card">
-        <div class="card-header bg-warning text-white">
-          Producers with Largest and Smallest Intervals
+        <div class="card-header bg-primary text-white">
+          Producers with largest and smallest intervals between wins
         </div>
         <div class="card-body">
           <div class="row">
             <div class="col-md-12 mb-4">
-              <h6>Largest Interval</h6>
+              <h6>Maximum</h6>
               <table class="table table-striped">
                 <thead>
                   <tr>
                     <th>Producer</th>
                     <th>Interval</th>
-                    <th>Previous Year</th>
-                    <th>Next Year</th>
+                    <th>Previous year</th>
+                    <th>Following year</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -77,14 +77,14 @@
               </table>
             </div>
             <div class="col-md-12">
-              <h6>Smallest Interval</h6>
+              <h6>Minimum</h6>
               <table class="table table-striped">
                 <thead>
                   <tr>
                     <th>Producer</th>
                     <th>Interval</th>
-                    <th>Previous Year</th>
-                    <th>Next Year</th>
+                    <th>Previous year</th>
+                    <th>Following year</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -104,7 +104,7 @@
 
     <div class="col-lg-6 mb-4">
       <div class="card">
-        <div class="card-header bg-info text-white">Winners by Year</div>
+        <div class="card-header bg-primary text-white">Winners by year</div>
         <div class="card-body">
           <form (submit)="searchWinners()">
             <div class="mb-3">
